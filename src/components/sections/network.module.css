@@ -1,7 +1,3 @@
-/* =========================================
-   MAIN LAYOUT
-========================================= */
-
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
@@ -18,11 +14,6 @@
   text-transform: uppercase;
 }
 
-
-/* =========================================
-   ORBIT DIAGRAM
-========================================= */
-
 .orbitWrap {
   display: flex;
   justify-content: center;
@@ -35,17 +26,12 @@
   aspect-ratio: 1;
 }
 
-
-/* =========================================
-   CONNECTION LINES
-========================================= */
-
 .lines {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  color: rgba(0, 217, 102, 0.25);
+  color: rgba(0, 217, 102, 0.18);
 }
 
 .lines line {
@@ -53,11 +39,6 @@
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
-
-
-/* =========================================
-   CIRCULAR RINGS
-========================================= */
 
 .ring {
   position: absolute;
@@ -75,11 +56,6 @@
   opacity: 0.8;
 }
 
-
-/* =========================================
-   CENTER NETWORK CIRCLE
-========================================= */
-
 .core {
   position: absolute;
   top: 50%;
@@ -93,15 +69,10 @@
   aspect-ratio: 1;
   border: 1px solid var(--line-strong);
   border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 30%,
-    rgba(0, 217, 102, 0.22),
-    rgba(7, 23, 15, 0.95) 65%
-  );
+  background: radial-gradient(circle at 35% 30%, rgba(0, 217, 102, 0.22), rgba(7, 23, 15, 0.95) 65%);
   box-shadow: 0 0 60px rgba(0, 217, 102, 0.12);
   text-align: center;
   transform: translate(-50%, -50%);
-  z-index: 2;
 }
 
 .core span {
@@ -117,97 +88,33 @@
   letter-spacing: 0.15em;
 }
 
-
-/* =========================================
-   PROFILE NODES
-========================================= */
-
 .nodes {
   position: absolute;
   inset: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
 .node {
   position: absolute;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-}
-
-.nodeContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-}
-
-
-/* =========================================
-   PROFILE AVATARS
-========================================= */
-
-.avatar {
-  position: relative;
-  width: clamp(48px, 10%, 66px);
-  aspect-ratio: 1;
-  flex: none;
-  overflow: hidden;
-  border: 2px solid var(--green);
-  border-radius: 50%;
-  background: var(--surface);
-  box-shadow:
-    0 0 0 4px rgba(0, 217, 102, 0.06),
-    0 0 22px rgba(0, 217, 102, 0.16);
-  z-index: 2;
-}
-
-.avatarImage {
-  object-fit: cover;
-  object-position: center;
-  transition: transform 300ms ease;
-}
-
-
-/* =========================================
-   NODE LABELS
-========================================= */
-
-.nodeLabel {
-  position: relative;
-  display: block;
-  margin-top: -8px;
-  padding: 0.48rem 0.9rem;
-  border: 1px solid var(--line-strong);
+  padding: 0.42rem 0.7rem;
+  border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(4, 16, 11, 0.96);
-  color: var(--paper);
-  font-size: clamp(0.55rem, 1vw, 0.72rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-  text-align: center;
+  background: rgba(4, 16, 11, 0.9);
+  color: var(--paper-dim);
+  font-size: clamp(0.55rem, 1vw, 0.68rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   white-space: nowrap;
-  transition:
-    border-color 250ms ease,
-    background-color 250ms ease,
-    box-shadow 250ms ease;
+  transform: translate(-50%, -50%);
 }
 
-
-/* =========================================
-   NODE POSITIONS
-========================================= */
-
 .node:nth-child(1) {
-  top: 10%;
+  top: 8%;
   left: 50%;
 }
 
 .node:nth-child(2) {
-  top: 23%;
+  top: 20%;
   left: 84%;
 }
 
@@ -217,17 +124,17 @@
 }
 
 .node:nth-child(4) {
-  top: 77%;
+  top: 80%;
   left: 84%;
 }
 
 .node:nth-child(5) {
-  top: 90%;
+  top: 92%;
   left: 50%;
 }
 
 .node:nth-child(6) {
-  top: 77%;
+  top: 80%;
   left: 16%;
 }
 
@@ -237,55 +144,15 @@
 }
 
 .node:nth-child(8) {
-  top: 23%;
+  top: 20%;
   left: 16%;
 }
-
-
-/* =========================================
-   HOVER EFFECT
-========================================= */
-
-@media (hover: hover) {
-  .node:hover {
-    z-index: 5;
-  }
-
-  .node:hover .avatarImage {
-    transform: scale(1.1);
-  }
-
-  .node:hover .nodeLabel {
-    border-color: var(--green);
-    background: rgba(0, 217, 102, 0.08);
-    box-shadow: 0 0 18px rgba(0, 217, 102, 0.12);
-  }
-}
-
-
-/* =========================================
-   TABLET
-========================================= */
 
 @media (max-width: 1023px) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .orbitWrap {
-    padding: 1rem;
-  }
-
-  .orbit {
-    width: min(100%, 560px);
   }
 }
-
-
-/* =========================================
-   MOBILE
-========================================= */
 
 @media (max-width: 767px) {
   .orbitWrap {
@@ -307,10 +174,8 @@
   }
 
   .core {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 130px;
+    position: static;
+    width: 150px;
     transform: none;
   }
 
@@ -318,46 +183,17 @@
     position: static;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem 0.75rem;
+    gap: 0.5rem;
     width: 100%;
   }
 
   .node {
     position: static;
+    text-align: center;
+    white-space: normal;
     transform: none;
   }
-
-  .nodeContent {
-    gap: 0;
-  }
-
-  .avatar {
-    width: 62px;
-  }
-
-  .nodeLabel {
-    margin-top: -7px;
-    font-size: 0.62rem;
-    padding: 0.45rem 0.7rem;
-  }
 }
-
-
-/* =========================================
-   REDUCED MOTION
-========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .avatarImage,
-  .nodeLabel {
-    transition: none;
-  }
-}
-
-
-/* =========================================
-   PRINT
-========================================= */
 
 @media print {
   .lines,
@@ -383,17 +219,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .node {
     position: static;
-    transform: none;
-  }
-
-  .nodeLabel {
     border-color: #bbb;
     background: #fff;
     color: #222;
+    transform: none;
   }
 }
