@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
-import heroImage from "@/assets/images/hero-dinner.webp";
 import { ButtonLink } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
+
+import heroImage from "@/assets/images/hero-dinner-1280.webp";
 
 import styles from "./hero.module.css";
 

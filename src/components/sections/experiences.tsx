@@ -1,10 +1,11 @@
-import buildNightImage from "@/assets/images/experience-build-night.webp";
-import foundingCircleImage from "@/assets/images/experience-founding-circle.webp";
-import openRoomImage from "@/assets/images/experience-open-room.webp";
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { CardGrid } from "@/components/ui/card-grid";
 import { MediaCard } from "@/components/ui/media-card";
 import { SectionHeading } from "@/components/ui/section-heading";
+
+import foundingCircleImage from "@/assets/images/exp-founding-circle-960.webp";
+import buildNightImage from "@/assets/images/exp-build-night-960.webp";
+import openRoomImage from "@/assets/images/exp-open-room-960.webp";
 
 import styles from "./experiences.module.css";
 

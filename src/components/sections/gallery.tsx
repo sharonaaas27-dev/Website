@@ -1,10 +1,11 @@
 import Image from "next/image";
 
-import conversationImage from "@/assets/images/gallery-conversation.webp";
-import networkingImage from "@/assets/images/gallery-networking.webp";
-import overheadImage from "@/assets/images/gallery-overhead.webp";
-import foundingCircleImage from "@/assets/images/experience-founding-circle.webp";
 import { SectionHeading } from "@/components/ui/section-heading";
+
+import foundingCircleImage from "@/assets/images/exp-founding-circle-960.webp";
+import conversationImage from "@/assets/images/gallery-conversation-640.webp";
+import networkingImage from "@/assets/images/gallery-networking-640.webp";
+import overheadImage from "@/assets/images/gallery-overhead-800.webp";
 
 import styles from "./gallery.module.css";
 

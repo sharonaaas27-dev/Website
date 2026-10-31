@@ -1,148 +1,301 @@
-.grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(2rem, 6vw, 6rem);
-  align-items: center;
-}
 
-.figure {
-  position: relative;
-  aspect-ratio: 1;
-  margin: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--ink-3);
+/* =========================================
+   PEOPLE SECTION
+========================================= */
+
+.peopleSection {
+  width: 100%;
   overflow: hidden;
 }
 
-.figure::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(0deg, rgba(4, 16, 11, 0.7), transparent 45%);
-  pointer-events: none;
+.peopleContainer {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  box-sizing: border-box;
 }
 
-.image {
-  object-fit: cover;
-}
+/* =========================================
+   SECTION HEADING
+========================================= */
 
-.caption {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 2;
+.headingContainer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.5rem 1rem;
-  padding: 0.8rem 1rem;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: rgba(4, 16, 11, 0.72);
-  color: var(--muted);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+
+.eyebrow {
+  margin: 0;
   text-transform: uppercase;
-  backdrop-filter: blur(12px);
-}
-
-.body {
-  max-width: 58ch;
-  margin-top: 1.25rem;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.8;
-}
-
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-}
-
-.chip {
-  padding: 0.38rem 0.72rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--muted);
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-.infoGrid {
-  display: grid;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.infoCard {
-  padding: 1.35rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--ink-2);
-}
-
-.infoCard h3 {
+  letter-spacing: 2px;
   color: var(--green);
-  font-size: 0.66rem;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  font-family: var(--font-sans);
+  line-height: 1.4;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  margin: 0;
+}
+
+.title span:first-child {
+  color: var(--paper);
+  font-size: clamp(44px, 6vw, 64px);
+  font-weight: 700;
+  font-family: var(--font-sans);
   text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
 }
 
-.infoCard p,
-.infoCard blockquote {
-  margin-top: 0.7rem;
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.7;
-}
-
-.infoCard blockquote {
-  color: var(--paper-dim);
+.title span:last-child {
+  color: var(--green);
+  font-size: clamp(44px, 6vw, 64px);
   font-family: var(--font-serif);
-  font-size: 1.05rem;
   font-style: italic;
-  line-height: 1.55;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
-.copy > :global(.textLink) {
-  margin-top: 1.5rem;
+.room {
+  font: inherit;
 }
+
+.description {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: clamp(14px, 1.4vw, 16px);
+  line-height: 1.8;
+  max-width: 680px;
+  font-family: var(--font-sans);
+  font-style: normal;
+}
+
+/* =========================================
+   PROFILE GRID
+========================================= */
+
+.portraitGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 42px 24px;
+  width: 100%;
+  align-items: start;
+}
+
+/* =========================================
+   INDIVIDUAL PROFILE
+========================================= */
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  text-align: center;
+  transition: transform 300ms ease;
+}
+
+.profile:hover {
+  transform: translateY(-4px);
+}
+
+/* =========================================
+   PROFILE TEXT
+   Fixed text area keeps all images aligned
+========================================= */
+
+.profileText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  width: 100%;
+  height: 100px;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+
+/* Member name */
+
+.name {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  color: var(--paper);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+/* Profession */
+
+.profession {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  color: var(--muted-2);
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+/* =========================================
+   PORTRAIT IMAGE
+========================================= */
+
+.portraitImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: var(--radius, 10px);
+  background: var(--surface);
+  transition:
+    transform 350ms ease,
+    filter 350ms ease;
+}
+
+.profile:hover .portraitImage {
+  transform: scale(1.025);
+  filter: brightness(1.06);
+}
+
+/* =========================================
+   RESPONSIVE — TABLET
+========================================= */
 
 @media (max-width: 1023px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .portraitGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px 20px;
   }
 
-  .figure {
-    max-width: 620px;
+  .profileText {
+    height: 145px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .profession {
+    font-size: 12px;
   }
 }
 
-@media (max-width: 479px) {
-  .caption {
-    flex-direction: column;
+/* =========================================
+   RESPONSIVE — MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+  .peopleContainer {
+    padding-inline: 0;
+  }
+
+  .headingContainer {
+    margin-bottom: 36px;
+    gap: 12px;
+  }
+
+  .title span:first-child,
+  .title span:last-child {
+    font-size: clamp(38px, 9vw, 48px);
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .portraitGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px 14px;
+  }
+
+  .profileText {
+    height: 180px;
+    gap: 6px;
+    padding-inline: 2px;
+  }
+
+  .name {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .profession {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .portraitImage {
+    border-radius: 8px;
   }
 }
 
-@media print {
-  .infoCard {
-    border-color: #bbb;
-    background: #fff;
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .portraitGrid {
+    gap: 26px 10px;
   }
 
-  .infoCard p,
-  .infoCard blockquote,
-  .body,
-  .caption {
-    color: #222;
+  .profileText {
+    height: 195px;
+  }
+
+  .name {
+    font-size: 12px;
+  }
+
+  .profession {
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .profile,
+  .portraitImage {
+    transition: none;
+  }
+
+  .profile:hover {
+    transform: none;
+  }
+
+  .profile:hover .portraitImage {
+    transform: none;
   }
 }

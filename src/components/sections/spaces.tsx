@@ -1,9 +1,10 @@
-import blendImage from "@/assets/images/space-blend.webp";
-import commonsImage from "@/assets/images/space-commons.webp";
-import studioImage from "@/assets/images/space-studio.webp";
 import { CardGrid } from "@/components/ui/card-grid";
 import { MediaCard } from "@/components/ui/media-card";
 import { SectionHeading } from "@/components/ui/section-heading";
+
+import blendImage from "@/assets/images/space-blend-640.webp";
+import studioImage from "@/assets/images/space-studio-640.webp";
+import commonsImage from "@/assets/images/space-commons-640.webp";
 
 export function Spaces() {
   return (

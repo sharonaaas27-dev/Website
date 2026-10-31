@@ -48,10 +48,19 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
-  output: "standalone",
+  turbopack: {},
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 2_678_400,
+    qualities: [75, 82],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "localhost",
+        port: "3000",
+        pathname: "/**",
+      },
+    ],
   },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
