@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
 import { Compass, DoorOpen, GitMerge, Sparkles } from "lucide-react";
 
-import foundingCircleImage from "@/assets/images/exp-founding-circle-960.webp";
+import foundingCircleImage from "@/assets/images/neww.webp";
 
 import styles from "./access.module.css";
 

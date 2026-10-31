@@ -1,7 +1,8 @@
 
-import Image, { type StaticImageData } from "next/image";
+"use client";
+
+import Image from "next/image";
 import styles from "./people.module.css";
-import { cn } from "@/lib/cn";
 
 import ananya from "@/assets/images/Peoples/Arun_Kumar.webp";
 import rahul from "@/assets/images/Peoples/Asmit Banik .webp";
@@ -12,156 +13,107 @@ import vikram from "@/assets/images/Peoples/Robin Alex Panicker .webp";
 import shreya from "@/assets/images/Peoples/Rugmani Meenambal.webp";
 import rohan from "@/assets/images/Peoples/Sruthy Noreen Lal.webp";
 
-// =========================================
-// PROFILE TYPE
-// =========================================
-
-type Profile = {
-  name: string;
-  profession: string;
-  src: StaticImageData;
-  alt: string;
-};
-
-// =========================================
-// PROFILE DATA
-// =========================================
-
-const PROFILES: Profile[] = [
+const people = [
   {
     name: "Arun Kumar",
     profession:
-      "Co-Founder, Chaaikari · Founder, Ushasfire Technocraft",
-    src: ananya,
-    alt: "Arun Kumar, Co-Founder of Chaaikari and Founder of Ushasfire Technocraft",
+      "Co-Founder at Chaaikari and Founder at Ushasfire Technocraft",
+    image: ananya,
   },
   {
     name: "Asmit Banik",
-    profession: "Co-Founder, Supymem",
-    src: rahul,
-    alt: "Asmit Banik, Co-Founder of Supymem",
+    profession: "Co-Founder at Supymem",
+    image: rahul,
   },
   {
     name: "Faiz Mohamed Haneef",
     profession:
-      "Angel VC, Malabar Angel Networks · Founder & CEO, Neoitio",
-    src: diana,
-    alt: "Faiz Mohamed Haneef, Angel VC at Malabar Angel Networks and Founder and CEO of Neoitio",
+      "Angel VC at Malabar Angel Networks and Founder & CEO at Neoitio",
+    image: diana,
   },
   {
     name: "Narayanan Nair Krishnamoorthy",
     profession:
-      "Founder, Varada Innovate · Mentor, KSUM & AIICTK",
-    src: arjun,
-    alt: "Narayanan Nair Krishnamoorthy, Founder of Varada Innovate and Mentor at KSUM and AIICTK",
+      "Founder at Varada Innovate and Mentor at KSUM, AIICTK",
+    image: arjun,
   },
   {
     name: "Prabin P Biaetreese",
     profession:
-      "Founder, Nadi India · Kappiness Mental Health Cafe",
-    src: meera,
-    alt: "Prabin P Biaetreese, Founder of Nadi India and Kappiness Mental Health Cafe",
+      "Founder at Nadi India and Kappiness Mental Health Cafe",
+    image: meera,
   },
   {
     name: "Robin Alex Panicker",
     profession:
-      "Angel Investor, Unicorn India Ventures · Founder, Appxiom · MD, ImageQ",
-    src: vikram,
-    alt: "Robin Alex Panicker, Angel Investor at Unicorn India Ventures, Founder of Appxiom and MD of ImageQ",
+      "Angel Investor at Unicorn India Ventures, Founder at Appxiom and MD at ImageQ",
+    image: vikram,
   },
   {
     name: "Rugmani Meenambal",
     profession:
-      "Co-Founder, Qurocare · Former Assistant Professor, Christ University",
-    src: shreya,
-    alt: "Rugmani Meenambal, Co-Founder of Qurocare and Former Assistant Professor at Christ University",
+      "Co-Founder at Qurocare and Ex-Assistant Professor at Christ University",
+    image: shreya,
   },
   {
     name: "Sruthy Noreen Lal",
     profession:
-      "Co-Founder & MD, Lollipopz · Former Technology Architect, Infosys",
-    src: rohan,
-    alt: "Sruthy Noreen Lal, Co-Founder and MD of Lollipopz and Former Technology Architect at Infosys",
+      "Co-Founder & MD at Lollipopz and Ex-Technology Architect at Infosys",
+    image: rohan,
   },
-  
 ];
-
-// =========================================
-// PEOPLE SECTION
-// =========================================
 
 export function People() {
   return (
-    <section
-      className={cn("section", styles.peopleSection)}
-      id="people"
-      aria-labelledby="people-title"
-    >
-      <div className={cn("container", styles.peopleContainer)}>
+    <section className={styles.peopleSection} id="people">
+      <div className={styles.peopleContainer}>
 
         {/* SECTION HEADING */}
+        <div className={styles.headingContainer}>
+          <span className={styles.eyebrow}>
+            THE PEOPLE BEHIND THE NETWORK
+          </span>
 
-        <header className={styles.headingContainer}>
-          <p className={cn("eyebrow", styles.eyebrow)}>
-            TUF NETWORKS / 004
-          </p>
-
-          <h2
-            className={styles.title}
-            id="people-title"
-          >
-            <span>WHO&apos;S INSIDE</span>
-
-            <span>
-              <em className={styles.room}>THE ROOM.</em>
-            </span>
+          <h2 className={styles.title}>
+            <span>WHO'S INSIDE</span>
+            <span className={styles.room}>THE ROOM.</span>
           </h2>
 
           <p className={styles.description}>
-            A diverse collection of ambitious people. Founders.
-            Builders. Creators. Operators. Professionals.
-            People who think differently and expect more.
+            A curated network of founders, builders, creators and
+            operators shaping ideas, building businesses and creating
+            meaningful impact.
           </p>
-        </header>
+        </div>
 
-        {/* PROFILE GRID */}
+        {/* PEOPLE GRID */}
+        <div className={styles.portraitGrid}>
+          {people.map((person) => (
+            <article className={styles.profile} key={person.name}>
 
-        <div
-          className={styles.portraitGrid}
-          aria-label="People in TUF Networks"
-        >
-          {PROFILES.map((profile) => (
-            <article
-              key={profile.name}
-              className={styles.profile}
-            >
-              {/* NAME AND PROFESSION */}
+              {/* PROFILE IMAGE */}
+              <div className={styles.imageWrapper}>
+                <Image
+                  src={person.image}
+                  alt={`${person.name} portrait`}
+                  width={600}
+                  height={600}
+                  sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 20vw"
+                  className={styles.portraitImage}
+                />
+              </div>
 
+              {/* NAME AND PROFESSION BELOW IMAGE */}
               <div className={styles.profileText}>
                 <h3 className={styles.name}>
-                  {profile.name}
+                  {person.name}
                 </h3>
 
                 <p className={styles.profession}>
-                  {profile.profession}
+                  {person.profession}
                 </p>
               </div>
 
-              {/* PROFILE IMAGE */}
-
-              <Image
-                src={profile.src}
-                alt={profile.alt}
-                className={styles.portraitImage}
-                width={800}
-                height={800}
-                sizes="
-                  (max-width: 767px) 50vw,
-                  (max-width: 1023px) 33vw,
-                  25vw
-                "
-                loading="lazy"
-              />
             </article>
           ))}
         </div>
@@ -170,3 +122,5 @@ export function People() {
     </section>
   );
 }
+
+export default People;
