@@ -18,7 +18,7 @@ const FEATURES = [
   },
   {
     title: "Real opportunities",
-    description: "Build, collaborate, grow.",
+    description: "access internships , projects , full time opportunities , mentorship & venture building support",
     icon: Rocket,
   },
   {
@@ -54,10 +54,7 @@ export function About() {
             </div>
 
             <a className={styles.cta} href="#about-standard">
-              <span className={styles.ctaIcon} aria-hidden="true">
-                <ArrowRight />
-              </span>
-              <span className={styles.ctaText}>Discover the philosophy</span>
+               
             </a>
           </div>
 

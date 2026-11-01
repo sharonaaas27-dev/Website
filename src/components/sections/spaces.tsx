@@ -2,9 +2,9 @@ import { CardGrid } from "@/components/ui/card-grid";
 import { MediaCard } from "@/components/ui/media-card";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-import blendImage from "@/assets/images/space-blend-640.webp";
-import studioImage from "@/assets/images/space-studio-640.webp";
-import commonsImage from "@/assets/images/space-commons-640.webp";
+import blendImage from "@/assets/images/kappiness.jpg";
+import studioImage from "@/assets/images/kopra2.png";
+import commonsImage from "@/assets/images/Neoito.png";
 
 export function Spaces() {
   return (
@@ -26,26 +26,26 @@ export function Spaces() {
             image={blendImage}
             alt="A minimalist café with warm lighting and wooden tables."
             kicker="Café & workspace"
-            title="The Blend Coffee Co."
-            description="Modern café with private meeting nooks."
+            title="Kappiness"
+            description="A curated café and workspace for founders and operators."
             sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
             partner
           />
           <MediaCard
             image={studioImage}
             alt="A bright, plant-filled coworking space with open-plan desks."
-            kicker="Co-working space"
-            title="Studio Labs"
-            description="Collaborative workspace for builders."
+            kicker="Coworking studio"
+            title="Kopra"
+            description="A curated coworking space for founders and operators."
             sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
             partner
           />
           <MediaCard
             image={commonsImage}
             alt="A spacious event hall with exposed brick, warm lighting and round tables."
-            kicker="Gathering hall"
-            title="The Commons"
-            description="Event space for founder circles."
+            kicker="Technology commons"
+            title="Neoito"
+            description="A curated technology commons for founders and operators."
             sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
             partner
           />

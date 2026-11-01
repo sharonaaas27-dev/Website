@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Eye, GitMerge, Heart, KeyRound, Users, Zap } from "lucide-react";
+import { Eye, GitMerge, KeyRound, Users, Zap } from "lucide-react";
 
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -25,20 +25,7 @@ const JOURNEY = [
 
 const CURRENT_STEP_INDEX = 4;
 
-interface ValueItem {
-  readonly title: string;
-  readonly description: string;
-  readonly icon: LucideIcon;
-}
 
-const VALUES: readonly ValueItem[] = [
-  { title: "People", description: "Meet exceptional people.", icon: Users },
-  { title: "Perspective", description: "See problems differently.", icon: Eye },
-  { title: "Access", description: "Get closer to founders and operators.", icon: KeyRound },
-  { title: "Collaboration", description: "Find people to build with.", icon: GitMerge },
-  { title: "Opportunity", description: "Discover what comes next.", icon: Zap },
-  { title: "Belonging", description: "Be part of a room that expects more.", icon: Heart },
-];
 
 export function Membership() {
   return (
@@ -75,23 +62,7 @@ export function Membership() {
           })}
         </ol>
 
-        <div className={styles.values}>
-          {VALUES.map((value) => {
-            const Icon = value.icon;
-
-            return (
-              <article className={styles.value} key={value.title}>
-                <span className={styles.valueIcon} aria-hidden="true">
-                  <Icon strokeWidth={1.8} />
-                </span>
-                <div>
-                  <h3>{value.title}</h3>
-                  <p>{value.description}</p>
-                </div>
-              </article>
-            );
-          })}
-        </div>
+        
 
         <p className={styles.note}>
           Applying does not guarantee a place.{" "}

@@ -7,6 +7,7 @@ const ITEMS = [
   { title: "Collaborations", description: "Find people to build with." },
   { title: "Ventures", description: "Discover companies and projects." },
   { title: "Mentorship", description: "Learn from experienced builders." },
+  { title: "Investments", description: "Find internships , projects , full time opportunities , and investment opportunities." },
 ] as const;
 
 export function Opportunities() {

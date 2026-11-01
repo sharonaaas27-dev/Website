@@ -47,8 +47,9 @@ export function Hero() {
           </h1>
 
           <p className={styles.lede}>
-            A curated network of founders, builders, creators and operators brought together around
-            ideas, experiences and meaningful conversations.
+            An invite- only community curated for students, freelancers to 
+            access founders , operators , leaders and creators through ideas, 
+            exeperiences and meaningful conversations
           </p>
 
           <div className={styles.actions}>
@@ -62,17 +63,13 @@ export function Hero() {
             </ButtonLink>
           </div>
 
-          <ul className={styles.meta} aria-label="Network details">
-            <li>Kerala, India</li>
-            <li>By invitation</li>
-            <li>Founders · Builders · Creators · Operators</li>
-          </ul>
+    
         </div>
       </div>
 
       <a className={styles.scroll} href="#about" aria-label="Scroll to the idea">
-        <span>Scroll</span>
-        <ArrowDown aria-hidden="true" strokeWidth={1.8} />
+       
+        
       </a>
     </section>
   );

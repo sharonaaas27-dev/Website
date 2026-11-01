@@ -25,7 +25,7 @@ const ITEMS: readonly AccessItem[] = [
   },
   {
     title: "Opportunities",
-    description: "Discover ventures, investments, roles and possibilities through the network.",
+    description: "access internships , projects , full time opportunities , mentorship & venture building support",
     icon: Compass,
   },
   {
