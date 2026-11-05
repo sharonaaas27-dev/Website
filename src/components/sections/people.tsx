@@ -75,7 +75,7 @@ export function People() {
           </span>
 
           <h2 className={styles.title}>
-            <span>WHO'S INSIDE</span>
+            <span>WHO&apos;S INSIDE</span>
             <span className={styles.room}>THE ROOM.</span>
           </h2>
 

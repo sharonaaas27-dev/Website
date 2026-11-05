@@ -2,11 +2,10 @@ import "server-only";
 
 import type { Enquiry } from "@/lib/validation/enquiry";
 
-const DELIVERY_TIMEOUT_MS = 12_000;
+const DELIVERY_TIMEOUT_MS = 15_000;
 
 export type DeliveryResult =
-  | { delivered: true }
-  | { delivered: false; reason: "not_configured" | "delivery_failed" };
+  { delivered: true } | { delivered: false; reason: "not_configured" | "delivery_failed" };
 
 function webhookUrl(): string | null {
   const value = process.env.ENQUIRY_WEBHOOK_URL?.trim();
@@ -27,6 +26,36 @@ export function getContactEmail(): string | undefined {
     return undefined;
   }
   return value;
+}
+
+/**
+ * Apps Script web apps always return HTTP 200, even when the script fails.
+ * Inspect JSON responses so `{ ok: false }` is treated as a failed delivery.
+ * Non-JSON 2xx responses (used by many generic webhook providers) still pass.
+ */
+async function providerRejected(response: Response): Promise<boolean> {
+  let raw: string;
+
+  try {
+    raw = await response.text();
+  } catch {
+    return false;
+  }
+
+  if (!raw.trim()) return false;
+
+  try {
+    const body = JSON.parse(raw) as { ok?: unknown; error?: unknown };
+    if (body?.ok === false) {
+      const reason = typeof body.error === "string" ? body.error : "unknown error";
+      console.error(`[enquiries] Delivery provider rejected the submission (${reason}).`);
+      return true;
+    }
+  } catch {
+    // Ignore non-JSON bodies.
+  }
+
+  return false;
 }
 
 export async function deliverEnquiry(enquiry: Enquiry): Promise<DeliveryResult> {
@@ -60,6 +89,10 @@ export async function deliverEnquiry(enquiry: Enquiry): Promise<DeliveryResult> 
 
     if (!response.ok) {
       console.error(`[enquiries] Delivery provider returned HTTP ${response.status}.`);
+      return { delivered: false, reason: "delivery_failed" };
+    }
+
+    if (await providerRejected(response)) {
       return { delivered: false, reason: "delivery_failed" };
     }
 

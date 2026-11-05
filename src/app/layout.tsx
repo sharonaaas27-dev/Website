@@ -40,7 +40,7 @@ const editorialFont = localFont({
 
 if (process.env.NODE_ENV === "production" && !IS_SITE_URL_CONFIGURED) {
   console.warn(
-    "[tuf-networks] NEXT_PUBLIC_SITE_URL is not set. Canonical URLs, Open Graph URLs and the sitemap will use http://localhost:3000. Set it before deploying.",
+    "[tuf-networks] SITE_URL is not set. Canonical URLs, Open Graph URLs and the sitemap will use http://localhost:3000. Set it before deploying.",
   );
 }
 

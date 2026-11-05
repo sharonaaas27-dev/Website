@@ -23,7 +23,7 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     timeout: 240_000,
     env: {
-      NEXT_PUBLIC_SITE_URL: baseURL,
+      SITE_URL: baseURL,
       PORT: String(PORT),
       HOSTNAME: "127.0.0.1",
     },

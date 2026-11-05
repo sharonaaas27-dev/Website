@@ -8,7 +8,7 @@ TUF Networks (The Ultimate Foundery) is a curated community platform connecting 
 
 ## Live Demo
 
-Visit the website at: [tufnetworks.com](https://tuf-networks.vercel.app) *(or local: http://localhost:3000)*
+Visit the website at: [tufnetworks.com](https://tuf-networks.vercel.app) _(or local: http://localhost:3000)_
 
 ## Table of Contents
 
@@ -23,23 +23,23 @@ Visit the website at: [tufnetworks.com](https://tuf-networks.vercel.app) *(or lo
 
 The homepage features these sequential sections:
 
-| Section | ID | Description |
-|---------|-----|-------------|
-| **Hero** | `#top` | Main headline: "The right room changes everything." with call-to-action buttons |
-| **Marquee** | `#marquee` | Scrolling tagline/brand awareness |
-| **About** | `#about` | The core philosophy - "Quality over quantity", curated relationships |
-| **Access** | `#access` | How to join / invitation process |
-| **People** | `#people` | Community members |
-| **Experiences** | `#experiences` | Past events and gatherings |
-| **Spaces** | `#spaces` | Physical/digital meeting spaces |
-| **Opportunities** | `#opportunities` | Jobs, collaborations, projects |
-| **Network** | `#the-room` | The community network overview |
-| **Membership** | `#membership` | Membership details and benefits |
-| **Standard** | `#standard` | Community standards and values |
-| **Gallery** | `#gallery` | Visual showcase of events and members |
-| **Vision** | `#vision` | Future direction and roadmap |
-| **Apply** | `#apply` | Invitation request form |
-| **FAQ** | `#faq` | Frequently asked questions |
+| Section           | ID               | Description                                                                     |
+| ----------------- | ---------------- | ------------------------------------------------------------------------------- |
+| **Hero**          | `#top`           | Main headline: "The right room changes everything." with call-to-action buttons |
+| **Marquee**       | `#marquee`       | Scrolling tagline/brand awareness                                               |
+| **About**         | `#about`         | The core philosophy - "Quality over quantity", curated relationships            |
+| **Access**        | `#access`        | How to join / invitation process                                                |
+| **People**        | `#people`        | Community members                                                               |
+| **Experiences**   | `#experiences`   | Past events and gatherings                                                      |
+| **Spaces**        | `#spaces`        | Physical/digital meeting spaces                                                 |
+| **Opportunities** | `#opportunities` | Jobs, collaborations, projects                                                  |
+| **Network**       | `#the-room`      | The community network overview                                                  |
+| **Membership**    | `#membership`    | Membership details and benefits                                                 |
+| **Standard**      | `#standard`      | Community standards and values                                                  |
+| **Gallery**       | `#gallery`       | Visual showcase of events and members                                           |
+| **Vision**        | `#vision`        | Future direction and roadmap                                                    |
+| **Apply**         | `#apply`         | Invitation request form                                                         |
+| **FAQ**           | `#faq`           | Frequently asked questions                                                      |
 
 ## Navigation
 
@@ -85,13 +85,32 @@ Visit [http://localhost:3000](http://localhost:3000) to see the site locally.
 
 ### Environment Variables
 
-Create a `.env.local` file:
+Copy `.env.example` to `.env.local` and fill in the values:
 
 ```
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+SITE_URL=http://localhost:3000
+ENQUIRY_WEBHOOK_URL=
+ENQUIRY_CONTACT_EMAIL=
 ```
 
-The site warns in production if `NEXT_PUBLIC_SITE_URL` is not set, as canonical URLs, Open Graph data, and the sitemap will use `http://localhost:3000` as the fallback.
+The site warns in production if `SITE_URL` is not set, as canonical URLs, Open Graph data, and the sitemap will use `http://localhost:3000` as the fallback. `SITE_URL` is server-only; it does not need a `NEXT_PUBLIC_` prefix because no browser code reads it.
+
+### Enquiry Delivery (Google Sheets)
+
+Invitation requests are saved to a Google Sheet through a Google Apps Script web app. The API route validates, rate-limits and forwards each submission to `ENQUIRY_WEBHOOK_URL`.
+
+1. Create a Google Sheet and open **Extensions → Apps Script**.
+   If that menu fails, create a standalone project at [script.google.com](https://script.google.com) and set `SPREADSHEET_ID` in the script to the ID from the sheet URL.
+2. Paste the contents of [`docs/google-sheets-webhook.gs`](docs/google-sheets-webhook.gs).
+3. Set `SECRET` to a long random string and save.
+4. Deploy as a web app: **Deploy → New deployment → Web app**, execute as **Me**, access **Anyone**.
+5. Set `ENQUIRY_WEBHOOK_URL` to the deployment URL including the secret:
+   `https://script.google.com/macros/s/<DEPLOYMENT_ID>/exec?token=<SECRET>`
+6. Add the same variables in Vercel (**Settings → Environment Variables** for Production, Preview and Development) and redeploy.
+7. Verify the deployment by opening the URL in a browser (expected: `{"ok":true,"message":"TUF webhook is live"}`) and submitting the form.
+8. To get an Excel file, use **File → Download → Microsoft Excel (.xlsx)** in the sheet.
+
+After editing the Apps Script, create a **New version** under **Deploy → Manage deployments** so the live URL uses the updated code.
 
 ### Build & Export
 
@@ -102,22 +121,22 @@ npm start
 
 ## Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `dev` | Start development server (`next dev`) |
-| `build` | Build the production site (`next build`) |
-| `postbuild` | Prepare standalone output |
-| `start` | Run the production server |
-| `lint` | Run ESLint |
-| `typecheck` | Run TypeScript type checking |
-| `format` | Format with Prettier |
-| `format:check` | Check formatting |
-| `test` | Run Vitest unit tests |
-| `test:watch` | Run Vitest in watch mode |
-| `test:coverage` | Run Vitest with coverage |
-| `test:e2e` | Run Playwright e2e tests |
-| `test:e2e:ui` | Run Playwright e2e tests with UI |
-| `validate` | Run full validation (typecheck + lint + format + test + build) |
+| Script          | Description                                                    |
+| --------------- | -------------------------------------------------------------- |
+| `dev`           | Start development server (`next dev`)                          |
+| `build`         | Build the production site (`next build`)                       |
+| `postbuild`     | Prepare standalone output                                      |
+| `start`         | Run the production server                                      |
+| `lint`          | Run ESLint                                                     |
+| `typecheck`     | Run TypeScript type checking                                   |
+| `format`        | Format with Prettier                                           |
+| `format:check`  | Check formatting                                               |
+| `test`          | Run Vitest unit tests                                          |
+| `test:watch`    | Run Vitest in watch mode                                       |
+| `test:coverage` | Run Vitest with coverage                                       |
+| `test:e2e`      | Run Playwright e2e tests                                       |
+| `test:e2e:ui`   | Run Playwright e2e tests with UI                               |
+| `validate`      | Run full validation (typecheck + lint + format + test + build) |
 
 ## Project Structure
 

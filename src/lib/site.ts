@@ -37,12 +37,16 @@ function normalizeSiteUrl(value: string | undefined): string {
 }
 
 /**
- * Canonical production origin. Set NEXT_PUBLIC_SITE_URL in every deployment.
- * The localhost fallback keeps local builds and previews working without
- * shipping a hard-coded company domain.
+ * Canonical production origin. Set SITE_URL in every deployment.
+ * NEXT_PUBLIC_SITE_URL is still read for backwards compatibility, but it is
+ * not needed in browser JavaScript, so the unprefixed server variable is
+ * preferred. The localhost fallback keeps local builds and previews working
+ * without shipping a hard-coded company domain.
  */
-export const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
-export const IS_SITE_URL_CONFIGURED = Boolean(process.env.NEXT_PUBLIC_SITE_URL?.trim());
+const configuredSiteUrl = process.env.SITE_URL ?? process.env.NEXT_PUBLIC_SITE_URL;
+
+export const SITE_URL = normalizeSiteUrl(configuredSiteUrl);
+export const IS_SITE_URL_CONFIGURED = Boolean(configuredSiteUrl?.trim());
 
 export function absoluteUrl(path = "/"): string {
   return new URL(path, `${SITE_URL}/`).toString();

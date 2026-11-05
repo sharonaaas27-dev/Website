@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const sharp = require('sharp');
 
 const svg = `<svg width="1024" height="1024" viewBox="0 0 1024 1024">
